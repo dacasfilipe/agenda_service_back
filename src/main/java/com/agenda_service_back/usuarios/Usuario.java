@@ -1,5 +1,6 @@
 package com.agenda_service_back.usuarios;
 
+import com.agenda_service_back.agendamento.Agendamento;
 import com.agenda_service_back.endereco.Endereco;
 import com.agenda_service_back.telefone.Telefone;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -46,4 +47,7 @@ public class Usuario implements Serializable {
 
     @OneToMany(mappedBy = "telefone_id",fetch = FetchType.LAZY)
     private List<Telefone> telefones;
+
+    @OneToMany(mappedBy = "agendamento_usuario_id")
+    private List<Agendamento> agendamentos;
 }
