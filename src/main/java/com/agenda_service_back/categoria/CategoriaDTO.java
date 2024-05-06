@@ -14,7 +14,7 @@ public class CategoriaDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long categoria_id;
     @NotNull(message = " o campo NOME é requerido.")
-    private String categoria_name;
+    private String categoria_nome;
     @NotNull(message = "o campo DESCRICAO é requerido.")
     private String categoria_descricao;
     //private List<ServicoDTO> servicos;

@@ -23,7 +23,7 @@ public class CategoriaService {
                 .collect(Collectors.toList());
     }
     //buscar uma categoria pelo id
-    public CategoriaDTO findByID(Long id){
+    public CategoriaDTO findById(Long id){
         Categoria categoria = categoriaRepository.findById(id)
         .orElseThrow(()->new IllegalArgumentException("Categoria nâo encontrada"));
         return categoriaMapper.toDTO(categoria);
@@ -32,6 +32,7 @@ public class CategoriaService {
     public CategoriaDTO create(CategoriaDTO categoriaDTO){
         Categoria categoria = categoriaMapper.toEntity(categoriaDTO);
         categoria = categoriaRepository.save(categoria);
+
         return categoriaMapper.toDTO(categoria);
     }
     //update categoria
