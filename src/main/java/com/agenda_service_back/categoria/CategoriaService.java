@@ -14,6 +14,8 @@ public class CategoriaService {
     @Autowired
     private CategoriaMapper categoriaMapper;
 
+    private CategoriaConverter categoriaConverter;
+
     //buscar todas as categorias
     public List<CategoriaDTO> findAll(){
         List<Categoria> categorias =
@@ -26,13 +28,12 @@ public class CategoriaService {
     public CategoriaDTO findById(Long id){
         Categoria categoria = categoriaRepository.findById(id)
         .orElseThrow(()->new IllegalArgumentException("Categoria nâo encontrada"));
-        return categoriaMapper.toDTO(categoria);
+        return categoriaConverter.convertToDTO(categoria);
     }
     //criando uma nova categoria
     public CategoriaDTO create(CategoriaDTO categoriaDTO){
         Categoria categoria = categoriaMapper.toEntity(categoriaDTO);
         categoria = categoriaRepository.save(categoria);
-
         return categoriaMapper.toDTO(categoria);
     }
     //update categoria
