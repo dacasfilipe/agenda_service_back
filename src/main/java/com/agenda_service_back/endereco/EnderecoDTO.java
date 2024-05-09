@@ -3,6 +3,7 @@ package com.agenda_service_back.endereco;
 import com.agenda_service_back.prestador.Prestador;
 import com.agenda_service_back.usuarios.Usuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,40 +15,34 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "endereco")
-public class Endereco implements Serializable {
+public class EnderecoDTO implements Serializable {
     private static final Long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "endereco_id")
     private Long endereco_id;
 
-    @Column(name = "endereco_rua")
+    @NotNull(message = "o campo RUA é requerido.")
     private String endereco_rua;
 
-    @Column(name = "endereco_cep")
+    @NotNull(message = "o campo CEP é requerido.")
     private String endereco_cep;
 
-    @Column(name = "endereco_numero")
+    @NotNull(message = "o campo Numero é requerido.")
     private int endereco_numero;
 
-    @Column(name = "endereco_complemento")
     private String endereco_complemento;
 
-    @Column(name = "endereco_cidade")
+    @NotNull(message = "o campo CIDADE é requerido.")
     private String endereco_cidade;
 
-    @Column(name = "endereco_estado")
+    @NotNull(message = "o campo ESTADO é requerido.")
     private String endereco_estado;
 
-    @Column(name = "endereco_bairro")
+    @NotNull(message = "o campo BAIRRO é requerido.")
     private String endereco_bairro;
 
-    @OneToMany(mappedBy = "usuario_id", fetch = FetchType.LAZY)
-    private List<Usuario> usuarios = new ArrayList<>();
+    private List<Usuario> usuarios;
 
-    @OneToMany(mappedBy = "prestador_id", fetch = FetchType.LAZY)
-    private List<Prestador> prestadores = new ArrayList<>();;
+    private List<Prestador> prestadores;
 
 }
