@@ -39,10 +39,6 @@ public class Usuario implements Serializable {
     @Column(name = "usuario_senha")
     private String usuario_senha;
 
-//    public void setUsuario_endereco_id(Endereco endereco) {
-//        this.endereco.getEndereco_id(usuarioDTO.getUsuario_endereco_id());
-//    }
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_endereco_id")
     private Endereco endereco;
