@@ -41,7 +41,7 @@ public class Usuario implements Serializable {
     @Column(name = "usuario_senha")
     private String usuario_senha;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_endereco_id",nullable = false)
     private Endereco endereco;
 
