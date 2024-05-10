@@ -28,6 +28,7 @@ public class UsuarioController {
     }
     @PostMapping //salvar uma categoria no banco de dados
     public ResponseEntity<UsuarioDTO> createUsuario(@RequestBody UsuarioDTO usuarioDTO){
+        System.out.println(usuarioDTO);
         UsuarioDTO createUsuarioDTO = usuarioService.create(usuarioDTO);
         return
                 ResponseEntity.status(HttpStatus.CREATED).body(createUsuarioDTO);

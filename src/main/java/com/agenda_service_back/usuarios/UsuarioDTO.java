@@ -10,6 +10,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -24,16 +25,17 @@ public class UsuarioDTO implements Serializable {
 
     private long usuario_id;
 
+    @CPF
     private String usuario_cpf;
 
     private String usuario_email;
 
-    @JsonFormat(pattern = "dd/MM/YYYY")
+//    @JsonFormat(pattern = "dd/MM/YYYY")
     private LocalDate usuario_data_nascimento;
 
     private String usuario_senha;
 
-    private Endereco usuario_endereco_id;
+    private Long usuario_endereco_id;
 
 
 }

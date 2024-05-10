@@ -24,7 +24,7 @@ public interface UsuarioMapper {
             @Mapping(source = "usuarioDTO.usuario_email", target = "usuario_email"),
             @Mapping(source = "usuarioDTO.usuario_data_nascimento", target = "usuario_data_nascimento"),
             @Mapping(source = "usuarioDTO.usuario_senha", target = "usuario_senha"),
-            @Mapping(source = "usuarioDTO.usuario_endereco_id", target = "endereco")
+            @Mapping(source = "usuarioDTO.usuario_endereco_id", target = "usuario_endereco_id")
 
     })
     Usuario updateEntity(UsuarioDTO usuarioDTO, Usuario Usuario);

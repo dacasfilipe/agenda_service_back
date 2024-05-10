@@ -27,7 +27,6 @@ public class Usuario implements Serializable {
     @Column(name = "usuario_id")
     private long usuario_id;
 
-    @CPF
     @Column(name = "usuario_cpf",unique = true)
     private String usuario_cpf;
 
@@ -40,6 +39,10 @@ public class Usuario implements Serializable {
 
     @Column(name = "usuario_senha")
     private String usuario_senha;
+
+//    public void setUsuario_endereco_id(Endereco endereco) {
+//        this.endereco.getEndereco_id(usuarioDTO.getUsuario_endereco_id());
+//    }
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_endereco_id",nullable = false)
