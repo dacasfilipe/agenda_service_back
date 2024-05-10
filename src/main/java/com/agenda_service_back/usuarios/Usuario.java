@@ -33,7 +33,6 @@ public class Usuario implements Serializable {
     @Column(name = "usuario_email",unique = true)
     private String usuario_email;
 
-    @JsonFormat(pattern = "dd/MM/YY")
     @Column(name = "usuario_data_nascimento")
     private LocalDate usuario_data_nascimento;
 
@@ -45,7 +44,7 @@ public class Usuario implements Serializable {
 //    }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "usuario_endereco_id",nullable = false)
+    @JoinColumn(name = "usuario_endereco_id")
     private Endereco endereco;
 
     @OneToMany(mappedBy = "telefone_id",fetch = FetchType.LAZY)

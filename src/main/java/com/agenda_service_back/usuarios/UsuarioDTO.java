@@ -25,7 +25,7 @@ public class UsuarioDTO implements Serializable {
 
     private long usuario_id;
 
-    @CPF
+
     private String usuario_cpf;
 
     private String usuario_email;
@@ -34,8 +34,8 @@ public class UsuarioDTO implements Serializable {
     private LocalDate usuario_data_nascimento;
 
     private String usuario_senha;
-
-    private Long usuario_endereco_id;
+    @JsonIgnore
+    private Endereco endereco;
 
 
 }

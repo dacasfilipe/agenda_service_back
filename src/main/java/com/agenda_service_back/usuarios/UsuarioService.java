@@ -1,5 +1,6 @@
 package com.agenda_service_back.usuarios;
 
+import com.agenda_service_back.endereco.EnderecoService;
 import com.agenda_service_back.usuarios.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,10 @@ import java.util.stream.Collectors;
 @Service
 public class UsuarioService {
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioRepository<Usuario, Long> usuarioRepository;
+
+    @Autowired
+    private EnderecoService enderecoService;
 
     @Autowired
     private UsuarioMapper usuarioMapper;
@@ -35,11 +39,9 @@ public class UsuarioService {
     }
     //criando uma nova usuario
     @Transactional
-    public UsuarioDTO create(UsuarioDTO usuarioDTO){
-        System.out.println(usuarioDTO);
-        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+    public UsuarioDTO create(Usuario usuario){
         System.out.println(usuario);
-        usuario = usuarioRepository.save(usuario);
+        usuarioRepository.save(usuario);
         return usuarioMapper.toDTO(usuario);
     }
     //update usuario
@@ -57,6 +59,13 @@ public class UsuarioService {
     public void deleteById(Long id){
         usuarioRepository.deleteById(id);
     }
+
+//    public Saudacao setNovaSaudacao(Saudacao novaSaudacao, String autorizacao) {
+//        String email = jwtService.getUsuarioId(autorizacao);
+//        novaSaudacao.setUsuario(usuarioService.getUsuario(email));
+//        saudacoesDAO.save(novaSaudacao);
+//        return ultimaSaudacaoAlternativa();
+//    }
 }
 
 
