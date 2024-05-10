@@ -1,5 +1,7 @@
 package com.agenda_service_back.endereco;
 
+import java.util.List;
+
 public class EnderecoConverter {
     public EnderecoDTO toDTO(Endereco endereco){
         EnderecoDTO enderecoDTO = new EnderecoDTO();
@@ -36,4 +38,8 @@ public class EnderecoConverter {
         endereco.setEndereco_rua(enderecoDTO.getEndereco_rua());
         return endereco;
     }
+
+//    public List<EnderecoDTO> toDTOList(List<Endereco> enderecos) {
+//
+//    }
 }

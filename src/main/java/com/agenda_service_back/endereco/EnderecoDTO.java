@@ -2,6 +2,7 @@ package com.agenda_service_back.endereco;
 
 import com.agenda_service_back.prestador.Prestador;
 import com.agenda_service_back.usuarios.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -17,8 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 public class EnderecoDTO implements Serializable {
     private static final Long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long endereco_id;
 
     @NotNull(message = "o campo RUA é requerido.")
@@ -41,8 +41,10 @@ public class EnderecoDTO implements Serializable {
     @NotNull(message = "o campo BAIRRO é requerido.")
     private String endereco_bairro;
 
-    private List<Usuario> usuarios;
-
-    private List<Prestador> prestadores;
+//    @JsonIgnore
+//    private List<Usuario> usuarios;
+//
+//    @JsonIgnore
+//    private List<Prestador> prestadores;
 
 }

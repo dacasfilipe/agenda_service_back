@@ -27,15 +27,14 @@ public class EnderecoController {
         return ResponseEntity.ok(enderecoDTO);
     }
     @PostMapping //salvar uma categoria no banco de dados
-    public ResponseEntity<EnderecoDTO> createEndereco(@Valid
-                                                        @RequestBody EnderecoDTO enderecoDTO){
+    public ResponseEntity<EnderecoDTO> createEndereco(@RequestBody EnderecoDTO enderecoDTO){
         EnderecoDTO createEnderecoDTO = enderecoService.create(enderecoDTO);
         return
                 ResponseEntity.status(HttpStatus.CREATED).body(createEnderecoDTO);
     }
     @PutMapping("/{id}")
     public ResponseEntity<EnderecoDTO> updateEndereco(@PathVariable Long id,
-                                                        @Valid @RequestBody EnderecoDTO enderecoDTO){
+                                                        @RequestBody EnderecoDTO enderecoDTO){
         EnderecoDTO updateEnderecoDTO = enderecoService.update(id,enderecoDTO);
         return ResponseEntity.ok(updateEnderecoDTO);
     }

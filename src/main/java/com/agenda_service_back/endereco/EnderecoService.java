@@ -1,5 +1,6 @@
 package com.agenda_service_back.endereco;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +21,11 @@ public class EnderecoService {
     public List<EnderecoDTO> findAll(){
         List<Endereco> enderecos =
                 enderecoRepository.findAll();
-        return enderecos.stream()
-                .map(enderecoConverter::toDTO)
-                .collect(Collectors.toList());
+        System.out.println(enderecos);
+//        return enderecos.stream()
+//                .map(enderecoConverter::toDTO)
+//                .collect(Collectors.toList());
+        return enderecoMapper.toDTOList(enderecos);
     }
     //buscar uma endereco pelo id
     public EnderecoDTO findById(Long id){
@@ -31,21 +34,25 @@ public class EnderecoService {
         return enderecoConverter.toDTO(endereco);
     }
     //criando uma nova endereco
+    @Transactional
     public EnderecoDTO create(EnderecoDTO enderecoDTO){
-        Endereco endereco = enderecoConverter.toEntity(enderecoDTO);
+        System.out.println(enderecoDTO);
+        Endereco endereco = enderecoMapper.toEntity(enderecoDTO);
+        System.out.println(endereco);
         endereco = enderecoRepository.save(endereco);
-        return enderecoConverter.toDTO(endereco);
+        return enderecoMapper.toDTO(endereco);
     }
     //update endereco
     public EnderecoDTO update(Long id,EnderecoDTO enderecoDTO){
         Endereco endereco = enderecoRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("Endereco não encontrado"));
         //endereco recebe os dados do enderecoDTO vindos do frontend
-        endereco = enderecoConverter.updateEntity(enderecoDTO,endereco);
+        enderecoDTO.setEndereco_id(endereco.getEndereco_id());
+        endereco = enderecoMapper.updateEntity(enderecoDTO,endereco);
         //metodo para salvar o endereco no banco de dados
         endereco = enderecoRepository.save(endereco);
         //retorna o endereco entidade convertido em DTO
-        return enderecoConverter.toDTO(endereco);
+        return enderecoMapper.toDTO(endereco);
     }
     public void deleteById(Long id){
         enderecoRepository.deleteById(id);
