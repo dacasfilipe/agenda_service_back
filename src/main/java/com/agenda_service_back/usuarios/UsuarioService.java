@@ -1,5 +1,6 @@
 package com.agenda_service_back.usuarios;
 
+import com.agenda_service_back.endereco.Endereco;
 import com.agenda_service_back.endereco.EnderecoService;
 import com.agenda_service_back.usuarios.*;
 import jakarta.transaction.Transactional;
@@ -49,12 +50,18 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("Usuario não encontrado"));
         //usuario recebe os dados do usuarioDTO vindos do frontend
+        System.out.println(usuario);
         usuarioDTO.setUsuario_id(usuario.getUsuario_id());
-        usuario = usuarioMapper.updateEntity(usuarioDTO,usuario);
-        //metodo para salvar o usuario no banco de dados
+        Endereco endereco = usuario.getEndereco();
+        usuarioDTO.setEndereco(endereco);
+        System.out.println("dto "+usuarioDTO);
+        usuario = usuarioMapper.updateEntity(usuarioDTO, usuario);
         usuario = usuarioRepository.save(usuario);
+        usuarioDTO = usuarioMapper.toDTO(usuario);
+        //metodo para salvar o usuario no banco de dados
+
         //retorna o usuario entidade convertido em DTO
-        return usuarioMapper.toDTO(usuario);
+        return usuarioDTO;
     }
     public void deleteById(Long id){
         usuarioRepository.deleteById(id);

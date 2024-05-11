@@ -43,9 +43,9 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "usuario_endereco_id")
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "telefone_id",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "telefone_id",fetch = FetchType.EAGER)
     private List<Telefone> telefones;
 
-    @OneToMany(mappedBy = "agendamento_usuario_id")
+    @OneToMany(mappedBy = "agendamento_usuario_id",fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos;
 }

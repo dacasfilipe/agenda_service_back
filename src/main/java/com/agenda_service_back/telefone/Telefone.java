@@ -27,11 +27,11 @@ public class Telefone implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "(XX) XXXX-XXXX")
     private String telefone_numero; // 48999895555 --> (48) 99989-5555
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "telefone_usuario_id")
     private Usuario usuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "telefone_prestador_id")
     private Prestador prestador;
 
