@@ -25,7 +25,6 @@ public class UsuarioDTO implements Serializable {
 
     private long usuario_id;
 
-
     private String usuario_cpf;
 
     private String usuario_email;

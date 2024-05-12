@@ -67,12 +67,6 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
 
-//    public Saudacao setNovaSaudacao(Saudacao novaSaudacao, String autorizacao) {
-//        String email = jwtService.getUsuarioId(autorizacao);
-//        novaSaudacao.setUsuario(usuarioService.getUsuario(email));
-//        saudacoesDAO.save(novaSaudacao);
-//        return ultimaSaudacaoAlternativa();
-//    }
 }
 
 
