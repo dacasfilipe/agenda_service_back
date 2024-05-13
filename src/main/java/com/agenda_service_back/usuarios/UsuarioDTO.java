@@ -22,21 +22,15 @@ import java.util.List;
 @NoArgsConstructor
 public class UsuarioDTO implements Serializable {
     private static final Long serialVersionUID = 1L;
-
     private long usuario_id;
-
     @CPF
     private String usuario_cpf;
-
     private String usuario_email;
-
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate usuario_data_nascimento;
-
     @JsonIgnore
     private String usuario_senha;
     @JsonIgnore
     private Endereco endereco;
-
 
 }
