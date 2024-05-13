@@ -39,6 +39,7 @@ public class UsuarioService {
         System.out.println(usuarioDTO);
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         System.out.println(usuario);
+        //salvo no banco através do save
         usuario = usuarioRepository.save(usuario);
         return usuarioMapper.toDTO(usuario);
     }
