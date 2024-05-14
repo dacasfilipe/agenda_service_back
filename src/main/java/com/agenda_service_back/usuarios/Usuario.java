@@ -48,4 +48,16 @@ public class Usuario implements Serializable {
 
     @OneToMany(mappedBy = "agendamento_usuario_id",fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos;
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "usuario_id=" + usuario_id +
+                ", usuario_cpf='" + usuario_cpf + '\'' +
+                ", usuario_email='" + usuario_email + '\'' +
+                ", usuario_data_nascimento=" + usuario_data_nascimento +
+                ", usuario_senha='" + usuario_senha + '\'' +
+                ", endereco=" + endereco +
+                '}';
+    }
 }

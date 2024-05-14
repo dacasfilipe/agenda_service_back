@@ -28,9 +28,9 @@ public class UsuarioDTO implements Serializable {
     private String usuario_email;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate usuario_data_nascimento;
-    @JsonIgnore
+
     private String usuario_senha;
-    @JsonIgnore
+
     private Endereco endereco;
 
 }
