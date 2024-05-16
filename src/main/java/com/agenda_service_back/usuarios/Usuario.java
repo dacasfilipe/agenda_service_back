@@ -49,7 +49,7 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
     private List<Telefone> telefones = new ArrayList<>();
 
-    @OneToMany(mappedBy = "agendamento",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos = new ArrayList<>();
 
     @Override
@@ -60,7 +60,6 @@ public class Usuario implements Serializable {
                 ", usuario_email='" + usuario_email + '\'' +
                 ", usuario_data_nascimento=" + usuario_data_nascimento +
                 ", usuario_senha='" + usuario_senha + '\'' +
-                ", endereco=" + endereco +
                 '}';
     }
 }

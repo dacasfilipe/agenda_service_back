@@ -1,5 +1,6 @@
 package com.agenda_service_back.servico;
 
+import com.agenda_service_back.agendamento.Agendamento;
 import com.agenda_service_back.categoria.Categoria;
 import com.agenda_service_back.prestador.Prestador;
 import jakarta.persistence.*;
@@ -8,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 @Data
 @AllArgsConstructor
@@ -41,5 +43,8 @@ public class Servico implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "servico_prestador_id",nullable = false)
     private Prestador prestador;
+
+    @OneToMany(mappedBy = "servico",fetch = FetchType.EAGER)
+    private ArrayList<Agendamento> agendamentos = new ArrayList<>();
 
 }

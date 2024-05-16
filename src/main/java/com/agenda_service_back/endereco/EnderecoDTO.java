@@ -41,10 +41,23 @@ public class EnderecoDTO implements Serializable {
     @NotNull(message = "o campo BAIRRO é requerido.")
     private String endereco_bairro;
 
-//    @JsonIgnore
-//    private List<Usuario> usuarios;
+    @JsonIgnore
+    private List<Usuario> usuarios = new ArrayList<>();
 //
 //    @JsonIgnore
 //    private List<Prestador> prestadores;
 
+    @Override
+    public String toString() {
+        return "EnderecoDTO{" +
+                "endereco_id=" + endereco_id +
+                ", endereco_rua='" + endereco_rua + '\'' +
+                ", endereco_cep='" + endereco_cep + '\'' +
+                ", endereco_numero=" + endereco_numero +
+                ", endereco_complemento='" + endereco_complemento + '\'' +
+                ", endereco_cidade='" + endereco_cidade + '\'' +
+                ", endereco_estado='" + endereco_estado + '\'' +
+                ", endereco_bairro='" + endereco_bairro + '\'' +
+                '}';
+    }
 }

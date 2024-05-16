@@ -48,7 +48,7 @@ public class Agendamento implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "agendamento_servico_id",nullable = false)
-    private Servico agendamento;
+    private Servico servico;
 
 
 }

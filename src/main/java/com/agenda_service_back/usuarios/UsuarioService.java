@@ -48,7 +48,7 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("Usuario não encontrado"));
         //usuario recebe os dados do usuarioDTO vindos do frontend
-        usuarioDTO.setUsuario_id(usuario.getUsuario_id());
+        usuarioDTO.setUsuario_id(id);
         usuario = usuarioMapper.updateEntity(usuarioDTO,usuario);
         //metodo para salvar o usuario no banco de dados
         usuario = usuarioRepository.save(usuario);
