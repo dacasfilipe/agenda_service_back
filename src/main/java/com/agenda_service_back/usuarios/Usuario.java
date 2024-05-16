@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -42,12 +43,14 @@ public class Usuario implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_endereco_id")
     private Endereco endereco;
+    //nome do relacionamento com a tabela endereço é endereço
+    //na entidade endereço colocar mappedby = "endereco"
 
-    @OneToMany(mappedBy = "telefone_id",fetch = FetchType.EAGER)
-    private List<Telefone> telefones;
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
+    private List<Telefone> telefones = new ArrayList<>();
 
-    @OneToMany(mappedBy = "agendamento_usuario_id",fetch = FetchType.EAGER)
-    private List<Agendamento> agendamentos;
+    @OneToMany(mappedBy = "agendamento",fetch = FetchType.EAGER)
+    private List<Agendamento> agendamentos = new ArrayList<>();
 
     @Override
     public String toString() {
