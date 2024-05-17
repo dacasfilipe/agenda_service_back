@@ -42,13 +42,13 @@ public class Agendamento implements Serializable {
     @Enumerated(EnumType.STRING)
     private AgendamentoStatus agendamento_status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "agendamento_usuario_id",nullable = false)
-    private Usuario agendamento_usuario_id;
+    private Usuario usuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "agendamento_servico_id",nullable = false)
-    private Servico agendamento_servico_id;
+    private Servico servico;
 
 
 }

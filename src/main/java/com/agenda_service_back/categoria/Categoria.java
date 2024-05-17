@@ -28,7 +28,15 @@ public class Categoria implements Serializable {
     @Column(name = "categoria_descricao")
     private String categoria_descricao;
 
-    @OneToMany(mappedBy = "servico_id",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "servico_id",fetch = FetchType.EAGER)
     private List<Servico> servicos;
 
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "categoria_id=" + categoria_id +
+                ", categoria_nome='" + categoria_nome + '\'' +
+                ", categoria_descricao='" + categoria_descricao + '\'' +
+                '}';
+    }
 }

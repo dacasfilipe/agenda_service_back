@@ -43,11 +43,13 @@ public class Usuario implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_endereco_id")
     private Endereco endereco;
+    //nome do relacionamento com a tabela endereço é endereço
+    //na entidade endereço colocar mappedby = "endereco"
 
-    @OneToMany(mappedBy = "telefone_id",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
     private List<Telefone> telefones = new ArrayList<>();
 
-    @OneToMany(mappedBy = "agendamento_usuario_id",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos = new ArrayList<>();
 
     @Override
@@ -58,13 +60,6 @@ public class Usuario implements Serializable {
                 ", usuario_email='" + usuario_email + '\'' +
                 ", usuario_data_nascimento=" + usuario_data_nascimento +
                 ", usuario_senha='" + usuario_senha + '\'' +
-                ", endereco=" + endereco +
                 '}';
     }
-    //usar este método utilitário nos realcionamento @OneToMany
-    // método utilitário para setar o telefone do usuario e adicionar o telefone na lista de telefones
-   public void adicionarTelefones(Telefone telefone){
-        telefone.setUsuario(this);
-        this.telefones.add(telefone);
-   }
 }

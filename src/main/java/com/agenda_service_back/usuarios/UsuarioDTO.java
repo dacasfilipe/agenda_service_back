@@ -31,6 +31,18 @@ public class UsuarioDTO implements Serializable {
 
     private String usuario_senha;
 
+    @JsonIgnore
     private Endereco endereco;
 
+    @Override
+    public String toString() {
+        return "UsuarioDTO{" +
+                "usuario_id=" + usuario_id +
+                ", usuario_cpf='" + usuario_cpf + '\'' +
+                ", usuario_email='" + usuario_email + '\'' +
+                ", usuario_data_nascimento=" + usuario_data_nascimento +
+                ", usuario_senha='" + usuario_senha + '\'' +
+                //pegar ´so o id do endereco do usuario
+                '}';
+    }
 }
