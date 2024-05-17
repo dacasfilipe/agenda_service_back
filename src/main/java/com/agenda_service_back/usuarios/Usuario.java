@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -44,10 +45,10 @@ public class Usuario implements Serializable {
     private Endereco endereco;
 
     @OneToMany(mappedBy = "telefone_id",fetch = FetchType.EAGER)
-    private List<Telefone> telefones;
+    private List<Telefone> telefones = new ArrayList<>();
 
     @OneToMany(mappedBy = "agendamento_usuario_id",fetch = FetchType.EAGER)
-    private List<Agendamento> agendamentos;
+    private List<Agendamento> agendamentos = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -60,4 +61,10 @@ public class Usuario implements Serializable {
                 ", endereco=" + endereco +
                 '}';
     }
+    //usar este método utilitário nos realcionamento @OneToMany
+    // método utilitário para setar o telefone do usuario e adicionar o telefone na lista de telefones
+   public void adicionarTelefones(Telefone telefone){
+        telefone.setUsuario(this);
+        this.telefones.add(telefone);
+   }
 }
