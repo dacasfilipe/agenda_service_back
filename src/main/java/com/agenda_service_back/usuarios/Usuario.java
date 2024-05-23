@@ -46,7 +46,7 @@ public class Usuario implements Serializable {
     //nome do relacionamento com a tabela endereço é endereço
     //na entidade endereço colocar mappedby = "endereco"
 
-    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Telefone> telefones = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)

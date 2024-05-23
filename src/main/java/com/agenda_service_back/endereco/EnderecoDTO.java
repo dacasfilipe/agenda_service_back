@@ -2,6 +2,7 @@ package com.agenda_service_back.endereco;
 
 import com.agenda_service_back.prestador.Prestador;
 import com.agenda_service_back.usuarios.Usuario;
+import com.agenda_service_back.usuarios.UsuarioDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -42,7 +43,7 @@ public class EnderecoDTO implements Serializable {
     private String endereco_bairro;
 
     @JsonIgnore
-    private List<Usuario> usuarios = new ArrayList<>();
+    private List<UsuarioDTO> usuarios = new ArrayList<>();
 //
 //    @JsonIgnore
 //    private List<Prestador> prestadores;

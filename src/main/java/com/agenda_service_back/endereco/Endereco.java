@@ -44,10 +44,10 @@ public class Endereco implements Serializable {
     @Column(name = "endereco_bairro")
     private String endereco_bairro;
 
-    @OneToMany(mappedBy = "endereco", fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Usuario> usuarios = new ArrayList<>();
 
-    @OneToMany(mappedBy = "endereco", fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Prestador> prestadores = new ArrayList<>();
 
     @Override
