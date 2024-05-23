@@ -42,6 +42,7 @@ public class EnderecoService {
         endereco = enderecoRepository.save(endereco);
         return enderecoMapper.toDTO(endereco);
     }
+    @Transactional
     //update endereco
     public EnderecoDTO update(Long id,EnderecoDTO enderecoDTO){
         Endereco endereco = enderecoRepository.findById(id)

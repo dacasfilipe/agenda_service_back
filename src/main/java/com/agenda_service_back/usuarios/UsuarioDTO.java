@@ -1,7 +1,9 @@
 package com.agenda_service_back.usuarios;
 
+import com.agenda_service_back.agendamento.Agendamento;
 import com.agenda_service_back.endereco.Endereco;
 import com.agenda_service_back.prestador.Prestador;
+import com.agenda_service_back.telefone.Telefone;
 import com.agenda_service_back.usuarios.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,8 +23,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsuarioDTO implements Serializable {
-    private static final Long serialVersionUID = 1L;
-
+    private static final long serialVersionUID = 1L;
     private long usuario_id;
 
     private String usuario_cpf;
@@ -35,6 +36,10 @@ public class UsuarioDTO implements Serializable {
     private String usuario_senha;
     @JsonIgnore
     private Endereco endereco;
+    @JsonIgnore
+    private List<Telefone> telefones;
+    @JsonIgnore
+    private List<Agendamento> agendamentos;
 
 
 }

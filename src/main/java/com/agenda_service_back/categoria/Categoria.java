@@ -16,19 +16,22 @@ import java.util.List;
 @Table(name = "categoria")
 public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categoria_id")
     private Long categoria_id;
-
     @Column(name = "categoria_nome")
     private String categoria_nome;
-
     @Column(name = "categoria_descricao")
     private String categoria_descricao;
-
-    @OneToMany(mappedBy = "servico_id",fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Servico> servicos;
-
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "categoria_id=" + categoria_id +
+                ", categoria_nome='" + categoria_nome + '\'' +
+                ", categoria_descricao='" + categoria_descricao + '\'' +
+                '}';
+    }
 }

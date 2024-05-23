@@ -1,11 +1,13 @@
 package com.agenda_service_back.categoria;
 
+import com.agenda_service_back.servico.ServicoDTO;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -17,5 +19,5 @@ public class CategoriaDTO implements Serializable {
     private String categoria_nome;
     @NotNull(message = "o campo DESCRICAO é requerido.")
     private String categoria_descricao;
-    //private List<ServicoDTO> servicos;
+    private List<ServicoDTO> servicos;
 }

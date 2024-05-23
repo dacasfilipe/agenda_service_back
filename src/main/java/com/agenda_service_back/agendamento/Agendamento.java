@@ -19,36 +19,37 @@ import java.time.LocalTime;
 @Table(name = "agendamento")
 public class Agendamento implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "agendamento_id")
     private long agendamento_id;
-
     @Column(name = "agendamento_data")
-    @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private LocalDate agendamento_data;
-
     @Column(name = "agendamento_hora")
     @Temporal(TemporalType.TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm")
     private LocalTime agendamento_hora;
-
     @Column(name = "agendamento_observacao")
     private String agendamento_observacao;
-
     @Column(name = "agendamento_status",nullable = false)
     @Enumerated(EnumType.STRING)
     private AgendamentoStatus agendamento_status;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "agendamento_usuario_id",nullable = false)
-    private Usuario agendamento_usuario_id;
-
+    private Usuario usuario;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "agendamento_servico_id",nullable = false)
-    private Servico agendamento_servico_id;
-
-
+    private Servico servico;
+    @Override
+    public String toString() {
+        return "Agendamento{" +
+                "agendamento_id=" + agendamento_id +
+                ", agendamento_data=" + agendamento_data +
+                ", agendamento_hora=" + agendamento_hora +
+                ", agendamento_observacao='" + agendamento_observacao + '\'' +
+                ", agendamento_status=" + agendamento_status +
+                ", agendamento_usuario_id=" + usuario +
+                ", agendamento_servico_id=" + servico +
+                '}';
+    }
 }

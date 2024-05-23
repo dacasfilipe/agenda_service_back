@@ -17,34 +17,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EnderecoDTO implements Serializable {
-    private static final Long serialVersionUID = 1L;
-
+    private static final long serialVersionUID = 1L;
     private Long endereco_id;
-
     @NotNull(message = "o campo RUA é requerido.")
     private String endereco_rua;
-
     @NotNull(message = "o campo CEP é requerido.")
     private String endereco_cep;
-
     @NotNull(message = "o campo Numero é requerido.")
     private int endereco_numero;
-
     private String endereco_complemento;
-
     @NotNull(message = "o campo CIDADE é requerido.")
     private String endereco_cidade;
-
     @NotNull(message = "o campo ESTADO é requerido.")
     private String endereco_estado;
-
     @NotNull(message = "o campo BAIRRO é requerido.")
     private String endereco_bairro;
-
-//    @JsonIgnore
-//    private List<Usuario> usuarios;
-//
-//    @JsonIgnore
-//    private List<Prestador> prestadores;
-
+    @JsonIgnore
+    private List<Usuario> usuarios;
+    @JsonIgnore
+    private List<Prestador> prestadores;
 }

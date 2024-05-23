@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,31 +22,37 @@ import java.util.List;
 @Entity
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "usuario_id")
     private long usuario_id;
-
     @Column(name = "usuario_cpf",unique = true)
     private String usuario_cpf;
-
     @Column(name = "usuario_email",unique = true)
     private String usuario_email;
-
     @Column(name = "usuario_data_nascimento")
     private LocalDate usuario_data_nascimento;
-
     @Column(name = "usuario_senha")
     private String usuario_senha;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_endereco_id")
     private Endereco endereco;
-
-    @OneToMany(mappedBy = "telefone_id",fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Telefone> telefones;
-
-    @OneToMany(mappedBy = "agendamento_usuario_id",fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos;
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "usuario_id=" + usuario_id +
+                ", usuario_cpf='" + usuario_cpf + '\'' +
+                ", usuario_email='" + usuario_email + '\'' +
+                ", usuario_data_nascimento=" + usuario_data_nascimento +
+                ", usuario_senha='" + usuario_senha + '\'' +
+//                ", endereco=" + endereco +
+//                ", telefones=" + telefones +
+//                ", agendamentos=" + agendamentos +
+                '}';
+    }
+
 }
