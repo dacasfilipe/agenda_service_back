@@ -3,6 +3,7 @@ package com.agenda_service_back.telefone;
 import com.agenda_service_back.prestador.Prestador;
 import com.agenda_service_back.usuarios.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class Telefone implements Serializable {
     private String telefone_numero; // 48999895555 --> (48) 99989-5555
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "telefone_usuario_id")
+    @JsonIgnore
     private Usuario usuario;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "telefone_prestador_id")
